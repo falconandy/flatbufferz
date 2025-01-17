@@ -93,7 +93,9 @@ fn debug(b: Builder, comptime fmt: []const u8, args: anytype) void {
     //     args ++ .{ b.bytes.items, b.minalign, b.vtable.items, b.object_end, b.vtables.items, b.head, b.nested, b.finished },
     // );
     _ = b;
-    std.log.debug(fmt, args);
+    _ = fmt;
+    _ = args;
+    //std.log.debug(fmt, args);
 }
 
 /// Reset truncates the underlying Builder buffer, facilitating alloc-free
@@ -252,7 +254,9 @@ fn err(
     args: anytype,
     e: common.BuilderError,
 ) common.BuilderError {
-    std.log.err(fmt, args);
+    //std.log.err(fmt, args);
+    _ = fmt;
+    _ = args;
     return e;
 }
 
@@ -301,7 +305,7 @@ pub fn prep(b: *Builder, size: i32, additional_bytes: i32) !void {
 
     // Find the amount of alignment needed such that `size` is properly
     // aligned after `additional_bytes`:
-    var align_size = (~(@as(i64, @bitCast(b.bytes.items.len)) - @as(i32, @bitCast(b.head)) + additional_bytes) + 1);
+    var align_size = (~(@as(isize, @bitCast(b.bytes.items.len)) - @as(i32, @bitCast(b.head)) + additional_bytes) + 1);
     align_size &= size - 1;
 
     b.debug("prep() 1 b.head={} align_size={} additional_bytes={} size={}", .{ b.head, align_size, additional_bytes, size });
