@@ -10,7 +10,7 @@
         },
         .flatbuffers = .{
             .url = "https://github.com/google/flatbuffers/archive/refs/tags/v24.3.25.tar.gz",
-            .hash = "1220e0e4410050d40ea6ca4b70456c2a71e28fa6573c7d7c465e423d643325c6a957",
+            .hash = "N-V-__8AAICVwQDg5EEAUNQOpspLcEVsKnHij6ZXPH18Rl5C",
         },
     },
 }
